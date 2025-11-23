@@ -39,7 +39,9 @@ public class XmlUtils {
      * @return the string
      */
     public static String normalizeTemplate(String template) {
-        return template.replaceAll("\\\\n", "\n");
+        Element element = new Element("template");
+        element.addContent(template);
+        return element.getTextNormalize().replaceAll("\\\\n", "\n");
     }
 
     /**
@@ -121,8 +123,7 @@ public class XmlUtils {
      * @param type       the type
      * @return the values
      */
-    public static <T extends Enum<T>> Set<T> getValues(Element element, String parentName, String childName,
-            Class<T> type) {
+    public static <T extends Enum<T>> Set<T> getValues(Element element, String parentName, String childName, Class<T> type) {
         Set<T> result = new LinkedHashSet<>();
         Element root = element.getChild(parentName);
         for (Object value : root.getChildren(childName)) {
