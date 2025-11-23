@@ -26,17 +26,17 @@
 
         <template regexp="^.*(public|protected|private)*.+class\s+\w+.*">
 /**\n
- * The type ${name}.\n
-    &lt;#if element.typeParameters?has_content&gt;
-        * \n
-    &lt;/#if&gt;
-
-    &lt;#list element.typeParameters as typeParameter&gt;
-
-        * @param &lt;${typeParameter.name}&gt; the type parameter\n
-    &lt;/#list&gt;
-
- */
+* @version v2.3\n
+* @ClassName: ${name}.java\n
+* @author: zy\n
+* @date: ${.now?string("yyyy/MM/dd HH:mm")}\n
+* @Description: ${name}\n
+&lt;#if element.typeParameters?has_content&gt; * \n
+&lt;/#if&gt;
+&lt;#list element.typeParameters as typeParameter&gt;
+* @param &lt;${typeParameter.name}&gt; the type parameter\n
+&lt;/#list&gt;
+*/
         </template>
 
         <template regexp=".+">
